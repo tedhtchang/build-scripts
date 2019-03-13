@@ -31,11 +31,11 @@ export SCRIPT_DIR="${PWD}"
 cd onnx
 
 pip install -q numpy pytest nbval flake8
+pip install -q pytest-cov
 
 # onnx c++ API tests
 export LD_LIBRARY_PATH="./.setuptools-cmake-build/:$LD_LIBRARY_PATH"
-./.setuptools-cmake-build/onnx_gtests
-./.setuptools-cmake-build/onnxifi_test_driver_gtests onnx/backend/test/data/node
+find .setuptools-cmake-build/ -name "onnx_gtests" -ls -exec {} \;
 
 # onnx python API tests
 pytest
